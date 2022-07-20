@@ -76,6 +76,7 @@ let contenedorCarrito = document.getElementById('carrito-contenedor')
 let contenedorProductos = document.getElementById('contenedor-Productos')
 let contadorCarrito = document.getElementById('contadorCarrito')
 const botonVaciar = document.getElementById('vaciar-carrito')
+let botonComprar = document.getElementById('comprar-carrito')
 
 
 /* INJECTAR PRODUCTOS*/
@@ -95,6 +96,20 @@ lista_productos.forEach((info) => {
 
     boton.addEventListener('click', () => {
         agregarAlCarrito(info.id)
+        Toastify({
+            text: "Se agrego al Carrito",
+            duration: 2000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "blue",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
     })
 });
 
@@ -175,7 +190,60 @@ const eliminarDelCarrito = (infoId) => {
     actualizarCarrito()
   
     console.log(carrito)
+    Toastify({
+        text: "Producto Eliminado",
+        duration: 2000,
+        newWindow: true,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "grey",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
 };
+
+/*BOTON COMPRAR*/
+botonComprar.addEventListener('click', () => {
+    
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger',
+        },
+        buttonsStyling: false
+      })
+      
+      swalWithBootstrapButtons.fire({
+        title: '¿Desea confirmar la compra?',
+        text: "Si confirma no podra cancelar la compra!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          swalWithBootstrapButtons.fire(
+            'Compra confirmada',
+            'Se realizo la compra!',
+            'success'
+          )
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            'Compra cancelada',
+            'Cancelo su compra!',
+            'error'
+          )
+        }
+      })
+    
+    });
 
 
 /* CODIGO DEL MODAL*/
