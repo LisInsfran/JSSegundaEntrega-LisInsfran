@@ -1,0 +1,67 @@
+ [
+        {
+        "id": 0, 
+        "img": "./img/shop1.png",
+        "nombre": "Buzo Bunny L O TOUR",
+        "precio": 7500,
+        "cantidad": 1,
+        "stock": 100
+    },
+
+    {
+        "id": 1,
+        "img": "./img/shop2.png",
+        "nombre": "Buzo TPWK L O TOUR",
+        "precio": 6000,
+        "cantidad": 1,
+        "stock": 100
+    },   
+    {
+        "id": 2,
+        "img": "./img/shop3.png",
+        "nombre": "Buzo LOVE ON TOUR",
+        "precio": 7500,
+        "cantidad": 1,
+        "stock": 100
+    },
+    {
+        "id": 3,
+        "img": "./img/shop4.png",          
+        "nombre": "Buzo TPWK GLITTER",
+        "precio": 7500,
+        "cantidad": 1,
+        "stock": 100
+    },
+    {
+        "id": 4,
+        "img":  "./img/shop5.png",        
+        "nombre": "Remera BUNNY LOVE",
+        "precio": 4000,
+        "cantidad": 1,
+        "stock": 100
+    },
+    {
+        "id": 5,
+        "img": "./img/shop6.png",     
+        "nombre": "Remera DYKWAR",
+        "precio": 4000,
+        "cantidad": 1,
+        "stock": 100
+    },
+    {
+        "id": 6,
+        "img": "./img/shop7.png",
+        "nombre": "Remera GOLDEN",                             
+        "precio": 4000,
+        "cantidad": 1,
+        "stock": 100
+    },
+    {
+        "id": 7,
+        "img": "./img/shop8.png",
+        "nombre": "Remera LOVE ON TOUR",
+        "precio": 4000,
+        "cantidad": 1,
+        "stock": 100
+    }
+]

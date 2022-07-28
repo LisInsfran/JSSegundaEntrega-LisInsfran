@@ -1,75 +1,3 @@
-/* ARRAY PRODUCTOS*/
-const lista_productos =[
-    {
-        id: 0,
-        img: "./img/shop1.png",
-        nombre: "Buzo Bunny L O TOUR",
-        precio: 7500,
-        cantidad: 1,
-        stock: 100,
-    },
-    {
-        id: 1,
-        img: "./img/shop2.png",
-        nombre: "Buzo TPWK L O TOUR",
-        precio: 6000,
-        cantidad: 1,
-        stock: 100,
-    },
-    {
-        id: 2,
-        img: "./img/shop3.png",
-        nombre: "Buzo LOVE ON TOUR",
-        precio: 7500,
-        cantidad: 1,
-        stock: 100,
-    },
-    {
-        id: 3,
-        img: "./img/shop4.png",          
-        nombre: "Buzo TPWK GLITTER",
-        precio: 7500,
-        cantidad: 1,
-        stock: 100,
-    },
-    {
-        id: 4,
-        img:  "./img/shop5.png",        
-        nombre: "Remera BUNNY LOVE",
-        precio: 4000,
-        cantidad: 1,
-        stock: 100,
-    },
-    {
-        id: 5,
-        img: "./img/shop6.png",     
-        nombre: "Remera DYKWAR",
-        precio: 4000,
-        cantidad: 1,
-        stock: 100,
-    },
-    {
-        id: 6,
-        img: "./img/shop7.png",
-        nombre: "Remera GOLDEN",                             
-        precio: 4000,
-        cantidad: 1,
-        stock: 100,
-    },
-    {
-        id: 7,
-        img: "./img/shop8.png",
-        nombre: "Remera LOVE ON TOUR",
-        precio: 4000,
-        cantidad: 1,
-        stock: 100,
-    },
-];
-
-
-/* ARRAY VACIO CARRITO*/
-let carrito = [];
-
 
 /* VARIABLES*/
 let contenedorCarrito = document.getElementById('carrito-contenedor')
@@ -79,16 +7,25 @@ const botonVaciar = document.getElementById('vaciar-carrito')
 let botonComprar = document.getElementById('comprar-carrito')
 
 
-/* INJECTAR PRODUCTOS*/
-lista_productos.forEach((info) => {
+/* ARRAY VACIO CARRITO*/
+let carrito = [];
 
-    let div = document.createElement('div');
-    div.classList.add('producto')
-    div.innerHTML = `
-    <img src=${info.img} alt="">
-    <h5>${info.nombre}</h5>
-    <p>Precio: ${info.precio}</p>
-    <button id="agg-producto${info.id}" class="boton-agg"><i class="fas fa-shopping-cart"></i></button>
+//LLAMO LOS PRODUCTOS DEL .JSON CON FETCH
+fetch("productos.json")
+    .then(response => response.json())
+    .then( lista_productos => rellenarCard(lista_productos));
+
+
+    function rellenarCard(lista_productos){
+    lista_productos.forEach((info) => {
+
+      let div = document.createElement('div');
+      div.classList.add('producto')
+      div.innerHTML = `
+      <img src=${info.img} alt="">
+     <h5>${info.nombre}</h5>
+      <p>Precio: ${info.precio}</p>
+     <button id="agg-producto${info.id}" class="boton-agg"><i class="fas fa-shopping-cart"></i></button>
     `
     contenedorProductos.appendChild(div)
 
@@ -134,7 +71,7 @@ const agregarAlCarrito = (prodId) => {
 
 };
 
-
+    }
 /*VACIAR CARRITO*/
 botonVaciar.addEventListener('click', () => {
     carrito.length = 0

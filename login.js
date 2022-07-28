@@ -1,3 +1,10 @@
+//FETCH
+fetch("https://api.openweathermap.org/data/2.5/weather?q=Buenos%20Aires&lang=es&appid=bbf8893c6e8030e157bb633d11a66e17")
+
+
+
+
+//LOGIN
 const nombre = document.getElementById("name")
 const email = document.getElementById("email")
 const dire = document.getElementById("adress")
